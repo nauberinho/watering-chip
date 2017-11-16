@@ -50,13 +50,43 @@ ul{
     }
 
     .lightpurple-text{
-        color: rebeccapurple;
+        color: #375b99;
     }
 
     .orange-text{
         color: orange;
     }
 
+    .lightgrey-text{
+        color: lightgrey;
+    }
+
+/*********FONT SIZE*********/
+    .font-xxlg{
+        font-size: 4em;
+
+    }
+
+    .font-xlg{
+        font-size: 3em;
+
+    }
+
+    .font-lg{
+        font-size: 2em;
+    }
+
+    .font-md{
+        font-size: 1.5em;
+    }
+
+    .font-sm{
+        font-size: 1em;
+    }
+
+    .font-xs{
+        font-size: 0.5em;
+    }
 
     /*******BUTTONS**********//
     button:focus {outline:0;}
@@ -79,7 +109,7 @@ ul{
 
         margin: auto;
         margin-top: 4%;
-        color: rebeccapurple;
+        color: #375b99;
         background-color: #efefef;
         font-weight: 700;
         font-size: 1.4em;
@@ -88,7 +118,7 @@ ul{
     .btn-big:hover{
 
         color: white;
-        background-color: rebeccapurple;
+        background-color: #375b99;
     }
 
     .form-btn{
@@ -101,7 +131,7 @@ ul{
         right: 0;
         top: 0;
         text-align: center;
-        color: rebeccapurple;
+        color: #375b99;
         font-size: 0.5em;
         width: 10%;
     }
@@ -155,6 +185,11 @@ ul{
         flex-direction: column;
     }
 
+    .row{
+        display: flex;
+        flex-direction: row;
+    }
+
 /*********HEADER*****************/
 .header-container{
     position: fixed;
@@ -162,7 +197,7 @@ ul{
     width: 100vw;
     height: 12vh;
     min-height: 50px;
-    border-bottom: 1px solid rebeccapurple;
+    border-bottom: 1px solid #375b99;
     background: #efefef;
     display: flex;
     flex-direction: column;
@@ -355,14 +390,13 @@ ul{
     right: 0;
     display: flex;
     flex-direction: column;
-
 }
 
     .authenticated-content {
         position: relative;
         height: 90%;
         min-height: 500px;
-        width: 90%;
+        width: 95%;
         margin: auto;
         margin-top: 2%;
         background-image: url("sprouterplant7.png");
@@ -395,7 +429,7 @@ ul{
                 letter-spacing: 2px;
                 display: flex;
                 flex-direction: column;
-                color: rebeccapurple;
+                color: #375b99;
             }
 
                 .header-content-span{
@@ -466,114 +500,226 @@ ul{
                 background-repeat: no-repeat;
             }
 
-        /**********MY PLANTS*********/
-            .my-plants-button{
-
-                position: absolute;
-                top: 0;
-                right: 15%;
-            }
 
 
-            .my-plants-header{
-                    position: relative;
-                    height: 10%;
-                    width: 100%;
-                    display: flex;
-                    border-bottom: 1px solid #95b580;
-                }
-                    .my-plants-header-overview{
-                        height: 100%;
-                        width: 80%;
-                        color: rebeccapurple;
-                        font-family: 'Abel', sans-serif;
-                        margin: 0;
-                        margin-left: 2%;
-                        font-weight: 700;
-                    }
 
-                    .my-plants-header-add-btn{
-                        height: 100%;
-                        width: 20%;
-                        color: #ffdd3a;
-                        font-size: 1.5em;
-                        margin: 0;
-                        margin-right: 3%;
+        /********** MY STATIONS SECTION *********/
 
-                        text-align: right;
+.my-plants-button{
 
-                    }
+    position: absolute;
+    top: 0;
+    right: 15%;
+}
 
-                    .display-plants-div{
-                        position: relative;
-                        width: 100%;
-                        height: auto;
-                        overflow: hidden;
-                        overflow-y: auto;
-                        display: flex;
-                        flex-direction: row;
-                        flex-wrap: wrap;
-                    }
 
-                        .my-plants-plant-div{
-                            height: 30vh;
-                            margin-top: 1%;
-                            border: 1px solid lightgrey;
-                            outline: 10px solid white;
-                            list-style-type: none;
-                            font-family: 'Abel', sans-serif;
-                            overflow: hidden;
-                            background: white;
-                        }
+.my-stations-header{
+    position: relative;
+    height: 7%;
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #95b580;
+}
+.my-stations-header-overview{
+    height: 100%;
+    width: 80%;
+    color: #375b99;
+    font-family: 'Abel', sans-serif;
+    margin: 0;
+    margin-left: 2%;
+    font-weight: 700;
+}
 
-                        .plant-div-name{
-                            width: 100%;
-                            height: 15%;
-                            font-weight: 700;
-                            color: rebeccapurple;
-                        }
+.my-stations-header-add-btn{
+    height: 100%;
+    color: #ffdd3a;
+    font-size: 1.5em;
+    margin-right: 3%;
+    text-align: right;
+}
+.my-stations-header-settings-btn{
+    height: 100%;
+    color: black;
+    font-size: 1.5em;
+    margin-right: 3%;
+    text-align: right;
+}
 
-                        .plant-div-img-wrapper{
-                            width: 100%;
-                            height: 70%;
-                            overflow: hidden;
-                        }
+.display-stations-div{
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 
-                        .plant-div-plant-img{
-                            display: block;
-                            max-height: 70%;
-                            max-width: 70%;
-                        }
+.my-stations-station-div{
+    height: 30vh;
+    margin-top: 1%;
+    border: 1px solid lightgrey;
+    outline: 10px solid white;
+    list-style-type: none;
+    font-family: 'Abel', sans-serif;
+    overflow: hidden;
+    background: rgba(255,255,255, 0.85);
+}
 
-                        .plant-div-view-button{
-                            width: 100%;
-                            height: 15%;
-                            margin-top: 0;
-                            font-size: 1em;
-                        }
+.station-div-name{
+    width: 100%;
+    height: 15%;
+    font-weight: 700;
+    color: #375b99;
+}
 
-        /********VIEW PLANT SECTION*********/
+.station-div-img-wrapper{
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
+}
+
+.station-div-station-img{
+    display: block;
+    max-height: 70%;
+    max-width: 70%;
+}
+
+.station-div-view-button{
+    width: 100%;
+    height: 15%;
+    margin-top: 0;
+    font-size: 1em;
+}
+
+/*************VIEW ONE STATION SECTION**************/
+.my-stations-button{
+
+    position: absolute;
+    top: 0;
+    right: 15%;
+}
+
+
+.my-stations-header{
+    position: relative;
+    height: 7%;
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #95b580;
+}
+.my-stations-header-overview{
+    height: 100%;
+    width: 80%;
+    color: #375b99;
+    font-family: 'Abel', sans-serif;
+    margin: 0;
+    margin-left: 2%;
+    font-weight: 700;
+}
+
+.display-plants-div{
+    position: relative;
+    height: 90%;
+    overflow: hidden;
+    overflow-y: auto;
+    display: flex;
+    padding: 2%;
+}
+
+.display-plants-title{
+    width: 100%;
+    height: 10%;
+    color: #375b99;
+    padding-left: 3%;
+    font-family: Abel, sans-serif
+}
+
+.my-stations-plant-div{
+    height: 25%;
+    margin-top: 4%;
+    border: 1px solid lightgrey;
+    margin-left: 3px;
+    list-style-type: none;
+    font-family: 'Abel', sans-serif;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    border-radius: 2%;
+}
+.plant-div-name{
+    width: 40%;
+    height: 100%;
+    font-weight: 700;
+    color: #375b99;
+    overflow: hidden;
+    margin: auto;
+    text-overflow:ellipsis;
+}
+.plant-div-img-wrapper{
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    margin: auto;
+}
+.plant-div-plant-img{
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+}
+.plant-div-view-button{
+    width: 20%;
+    height: 100%;
+    font-size: 1em;
+    margin: auto;
+}
+.view-stations-nav-wrapper{
+    position: absolute;
+    top: 25%;
+    right: 0;
+    height: 50%;
+    width: 10%;
+    overflow-y: auto;
+}
+.view-station-nav-button{
+    color: #375b99;
+    height: 10%;
+    width: 80%;
+    text-align: right;
+    cursor: pointer;
+    positioN: relative;
+    z-index: 1009;
+}
+
+/************ STATION SETTINGS ************/
+
+.station-settings{
+    background-color: rgba(0,0,0,0.8);
+}
+
+    .station-settings-wrapper{
+
+        height: 100%;
+    }
+
+        .station-settings-delete-btn{
+            width: 50%;
+            padding: 2px;
+            margin: auto;
+            background-color: white;
+            color: #375b99;
+        }
+
+    /********VIEW PLANT SECTION*********/
+
+
+
         /*****NAV BUTTONS*****/
 
-            .view-plants-nav-wrapper{
-                position: absolute;
-                top: 25%;
-                right: 0;
-                height: 50%;
-                width: 10%;
-                overflow-y: auto;
 
-
-            }
-                .view-plant-nav-button{
-                    color: rebeccapurple;
-                    height: 10%;
-                    width: 80%;
-                    text-align: right;
-                    cursor: pointer;
-                    positioN: relative;
-                    z-index: 1009;
-                }
 
             /* Main positioning */
             #Item_VIEW {
@@ -829,6 +975,16 @@ ul{
 
             }
 
+    .view-plant-nav-button{
+        color: #375b99;
+        height: 10%;
+        width: 80%;
+        text-align: right;
+        cursor: pointer;
+        positioN: relative;
+        z-index: 1009;
+    }
+
 /********* ADD SECTION *********************/
 
     .add-plant-input-container{
@@ -844,7 +1000,7 @@ ul{
             animation: fadeInDownMessage 500ms;
             border: 1px solid black;
             padding: 2%;
-            background-color: rebeccapurple;
+            background-color: #375b99;
             color: white;
             font-family: Abel, sans-serif;
             border-radius: 5%;
@@ -869,12 +1025,73 @@ ul{
 /********MY PROFILE SECTION******************/
 .my-profile-username{
     font-family: Abel, sans-serif;
-    color: rebeccapurple;
+    color: #375b99;
     font-weight: 700;
     font-size: 2em;
     width: 100%;
     height: 10%;
 }
+
+/********MY SETTINGS SECTION******************/
+.my-settings-notifications-container{
+    height: 90%;
+    font-family: Abel, sans-serif;
+    margin: auto;
+    background: white;
+}
+
+    .my-settings-header{
+        position: relative;
+        height: 10%;
+        width: 100%;
+        display: flex;
+        border-bottom: 1px solid #95b580;
+
+    }
+        .my-settings-header-overview{
+             height: 100%;
+             width: 80%;
+             color: #375b99;
+             font-family: 'Abel', sans-serif;
+             margin: 0;
+             margin-left: 2%;
+             font-weight: 700;
+         }
+
+        .my-settings-header-add-btn{
+            height: 100%;
+            width: 20%;
+            color: #ffdd3a;
+            font-size: 1.5em;
+            margin: 0;
+            margin-right: 3%;
+            text-align: right;
+
+        }
+
+    .notification-div{
+        width: 100%;
+        display: flex;
+        margin: auto;
+        margin-top: 1%;
+    }
+
+        .notification-title{
+            margin: auto;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .notification-span, .notification-toggle{
+            margin-right: 3%;
+            width: 60%;
+            text-align: center;
+            font-size: 1.15em;
+        }
+        .notification-toggle{
+            width: 30%;
+        }
+
 
 
 /********MENU SECTION******************/
@@ -884,12 +1101,12 @@ ul{
         width: 30%;
         right: 0;
         top: 0%;
-        border-left: 2px solid rebeccapurple;
+        border-left: 2px solid #375b99;
         display: flex;
         flex-direction: column;
         animation: fadeInDownMenu 200ms;
         background: white;
-        z-index: 1000;
+        z-index: 100000;
     }
 
         .profile-menu-button{
@@ -899,7 +1116,7 @@ ul{
              text-align: center;
              cursor: pointer;
              background: #efefef;
-             color: rebeccapurple;
+             color: #375b99;
 
          }
 

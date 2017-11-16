@@ -16,10 +16,10 @@ export default class MyStations extends Component {
         let stationsList = stations.map(function(station, key){
             return (
 
-                <Link to={"/signedin/mystations/" + station.name} key={key} className="my-plants-plant-div col-xs-6 col-sm-4 col-md-3">
-                    <div className="plant-div-name column"><div className="centered">{station.name}</div></div>
-                    <div className="plant-div-name column"><div className="centered">{station.plants.length} plants</div></div>
-                    <div className="btn-all btn-big plant-div-view-button">View</div>
+                <Link to={"/signedin/mystations/" + station.name} key={key} className="my-stations-station-div col-xs-6 col-sm-4 col-md-3">
+                    <div className="station-div-name column"><div className="centered">{station.name}</div></div>
+                    <div className="station-div-name column"><div className="centered">{station.plants.length} plants</div></div>
+                    <div className="btn-all btn-big station-div-view-button">View</div>
                 </Link>
 
             )
@@ -32,27 +32,24 @@ export default class MyStations extends Component {
 
                     <section className="div-cover">
 
-                        <div className="my-plants-header">
-                            <div className="my-plants-header-overview column">
-                                <div className="vertically-centered green-text"><h2>My Stations</h2></div>
+                        <header className="my-stations-header">
+                            <div className="my-stations-header-overview column font-md">
+                                <span className="green-text">My Stations</span>
                             </div>
-                            <Link to="/signedin/mystations/addstation" className="my-plants-header-add-btn btn-all column">
+                            <Link to="/signedin/mystations/addstation" className="my-stations-header-add-btn btn-all column">
                                 <div className="vertically-centered"><i className="material-icons">add</i></div>
                             </Link>
-                        </div>
-                        <div className="display-plants-div">
+                        </header>
+                        <section className="display-stations-div">
                             {stationsList}
-                        </div>
+                        </section>
                     </section>
-
                     :
-
                     <section className="col-sm-12 column div-cover">
                         <PulseLoaderViewstation/>
                     </section>
                 }
             </main>
-
         )
     }
 }

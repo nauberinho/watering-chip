@@ -25,7 +25,8 @@ import {
     fetchStations,
     fetchOneStation,
     updateStationToAdd,
-    addStation
+    addStation,
+    deleteOneStation
 } from '../actions/commonActions.js';
 
 import {connect} from 'react-redux';
@@ -75,8 +76,6 @@ class App extends Component {
                           }>
                           </Route>
 
-
-
                           <Route path="/signedin" render={(props) =>
                               (
                                   state.auth.signedIn === true?
@@ -101,6 +100,7 @@ class App extends Component {
                                       fetchOneStation={this.props.fetchOneStation}
                                       updateStationToAdd={this.props.updateStationToAdd}
                                       addStation={this.props.addStation}
+                                      deleteOneStation={this.props.deleteOneStation}
                                   />
                               :
                               <Redirect to="/"/>
@@ -224,6 +224,9 @@ const mapDispatchToProps = (dispatch) => {
 
             fetchOneStation: (username, stationName) => {
                 dispatch( fetchOneStation(username, stationName))
+            },
+            deleteOneStation: (username, stationName) => {
+                dispatch( deleteOneStation(username, stationName))
             },
 
 

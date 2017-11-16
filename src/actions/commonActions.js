@@ -213,3 +213,23 @@ export function removeOnePlant(plantName, username, stationName){
     }
 }
 
+export function deleteOneStation(username, stationName){
+    socket.emit('user-delete-one-station', (
+            {
+                user: {
+                    username: username
+                },
+                station: {
+                    name: stationName
+                }
+            }
+        )
+    );
+    return (dispatch) => {
+        socket.on('user-delete-one-station-confirmation', function(data){
+            dispatch({type: 'FOCUS_ON_STATION', payload: data})
+        })
+
+    }
+}
+

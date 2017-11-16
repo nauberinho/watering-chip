@@ -10,6 +10,8 @@ import AddPlant from './AddPlant.js';
 import ViewPlant from './ViewPlant.js';
 import ProfileMenu from './ProfileMenu.js';
 import MyProfile from './MyProfile.js';
+import MySettings from './MySettings.js';
+import StationSettings from './StationSettings.js';
 
 
 
@@ -110,7 +112,22 @@ export default class Authenticated extends Component {
                                     </Route>
 
                                     <Route exact path="/signedin/mystations/:station/addplant" render={(props) => (
-                                        <AddPlant
+                                    <AddPlant
+                                        state={state}
+                                        match={props.match}
+                                        plantsState={this.props.plantsState}
+                                        updatePlantToAdd={this.props.updatePlantToAdd}
+                                        addPlant={this.props.addPlant}
+                                        mainState={this.props.mainState}
+                                        fetchStations={this.props.fetchStations}
+                                        fetchOneStation={this.props.fetchOneStation}
+                                        stationsState={this.props.stationsState}
+                                    />
+                                    )}>
+                                    </Route>
+
+                                    <Route exact path="/signedin/mystations/:station/settings" render={(props) => (
+                                        <StationSettings
                                             state={state}
                                             match={props.match}
                                             plantsState={this.props.plantsState}
@@ -120,9 +137,12 @@ export default class Authenticated extends Component {
                                             fetchStations={this.props.fetchStations}
                                             fetchOneStation={this.props.fetchOneStation}
                                             stationsState={this.props.stationsState}
+                                            deleteOneStation={this.props.deleteOneStation}
                                         />
                                     )}>
                                     </Route>
+
+
                                     <Route exact path="/signedin/mystations/:station/:plant" render={(props) => (
                                         <ViewPlant
                                             match={props.match}
@@ -149,10 +169,18 @@ export default class Authenticated extends Component {
                                     </Route>
 
                                     <Route path="/signedin/mysettings" render={(props) => (
-                                        <div className="content content-main">
-                                            MY SETTINGS
-                                        </div>
-
+                                        <MySettings
+                                            match={props.match}
+                                            water={this.props.water}
+                                            focusOnPlant={this.props.focusOnPlant}
+                                            state={this.props.stationsState}
+                                            mainState={this.props.mainState}
+                                            fetchPlants={this.props.fetchPlants}
+                                            removeOnePlant={this.props.removeOnePlant}
+                                            focusOffPlant={this.props.focusOffPlant}
+                                            fetchStations={this.props.fetchStations}
+                                            fetchOneStation={this.props.fetchOneStation}
+                                        />
                                     )}>
                                     </Route>
 

@@ -31,7 +31,7 @@ export default class ViewStation extends Component{
                           to={"/signedin/mystations/" + station.name} onClick={() => {
                         this.props.fetchOneStation(username, station.name)
                     }}>
-                        {station._id === this.props.match.params.station ?
+                        {station.name === this.props.match.params.station ?
                             <i className="fa fa-square" aria-hidden="true"></i>
                             :
                             <i className="fa fa-square-o" aria-hidden="true"></i>
@@ -43,12 +43,9 @@ export default class ViewStation extends Component{
             let plantsList = state.focusStation.plants.map(function (plant, key) {
                 return (
                     <Link to={"/signedin/mystations/" + stationParam + "/" +  plant._id} key={key}
-                          className="my-plants-plant-div col-xs-6 col-sm-4 col-md-3 vertically-centered">
+                          className="my-stations-plant-div col-xs-12">
                         <div className="plant-div-name column">
                             <div className="centered">{plant.name}</div>
-                        </div>
-                        <div className="plant-div-name column">
-                            <div className="centered">{plant.date}</div>
                         </div>
                         <div className="plant-div-img-wrapper column"><img className="plant-div-plant-img centered"
                                                                            src={plant.imgUrl} alt={plant.imgUrl}/></div>
@@ -66,20 +63,22 @@ export default class ViewStation extends Component{
                         {focusStation.name === stationParam ?
 
                             <section className="div-cover">
-                                <div className="view-plants-nav-wrapper column">
+                                <div className="view-stations-nav-wrapper column">
                                     {navButtons}
                                 </div>
 
-                                <div className="my-plants-header">
-                                    <div className="my-plants-header-overview column">
-                                        <div className="vertically-centered green-text"><h3>{focusStation.name}</h3></div>
-                                        <div className="vertically-centered">{focusStation.plants.length} plants registered on this station</div>
+                                <div className="my-stations-header">
+                                    <div className="my-stations-header-overview font-md">
+                                           <span className="lightgrey-text">My stations > </span><span className="green-text">{focusStation.name}</span>
                                     </div>
-                                    <Link to={"/signedin/mystations/" + stationParam + "/addplant"} className="my-plants-header-add-btn btn-all column">
+                                    <Link to={"/signedin/mystations/" + stationParam + "/settings"} className="my-stations-header-settings-btn btn-all column">
+                                        <div className="vertically-centered"><i className="material-icons">settings</i></div>
+                                    </Link>
+                                    <Link to={"/signedin/mystations/" + stationParam + "/addplant"} className="my-stations-header-add-btn btn-all column">
                                         <div className="vertically-centered"><i className="material-icons">add</i></div>
                                     </Link>
                                 </div>
-                                <div className="display-plants-div">
+                                <div className="display-plants-div col-xs-12 col-sm-5 column">
                                     {plantsList}
                                 </div>
                             </section>
