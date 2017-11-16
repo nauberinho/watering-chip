@@ -27,9 +27,6 @@ export default class MySettings extends Component{
                         <div className="my-settings-header-overview column">
                             <div className="vertically-centered green-text"><h2>My Settings</h2></div>
                         </div>
-                        <Link to="/signedin/mystations/addstation" className="my-settings-header-add-btn btn-all column">
-                            <div className="vertically-centered"><i className="material-icons">add</i></div>
-                        </Link>
                     </header>
 
                     <section className="my-settings-notifications-container col-xs-12 col-sm-6 col-md-4 column">
