@@ -24,8 +24,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "npm run build&&gh-pages -d build"
+    "deploy": "gh-pages -d build"
 
   },
-  "homepage" : "http://nauberinho.github.io/watering-chip"
+  "homepage" : "https://nauberinho.github.io/watering-chip"
 }
