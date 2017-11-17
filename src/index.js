@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 import store from './store/store';
 import { BrowserRouter } from 'react-router-dom'
 import createBrowserHistory from 'history/createBrowserHistory'
+const history = createBrowserHistory()
 
 ReactDOM.render(
     <BrowserRouter history={history}>
