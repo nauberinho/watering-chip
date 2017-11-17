@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "body-parser": "^1.18.2",
+    "gh-pages": "^1.0.0",
     "halogenium": "^2.2.2",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
@@ -25,7 +26,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-
   },
-  "homepage" : "https://nauberinho.github.io/watering-chip"
+  "homepage": "https://nauberinho.github.io/watering-chip"
 }
