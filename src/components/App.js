@@ -3,6 +3,7 @@ import Authenticated from './Authenticated.js';
 import Authentication from './Authentication.js';
 import { BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import socket from '../socket.js'
+import '../App.css';
 import {
     changeView,
     initRender,
