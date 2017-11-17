@@ -1,4 +1,3 @@
-import '../main.css'
 import Header from './Header.js'
 import Authenticated from './Authenticated.js';
 import Authentication from './Authentication.js';
