@@ -44,7 +44,7 @@ export default class ViewPlant extends Component{
 
                 { focusPlant._id === this.props.match.params.plant ?
                     <div>
-                        <div className="view-plants-nav-wrapper column">
+                        <div className="view-plant-nav-wrapper column">
                             {navButtons}
                         </div>
                         <main>

@@ -8,7 +8,6 @@ export default class MyStations extends Component {
         let username = sessionUser.username;
         let password = sessionUser.password;
         this.props.fetchStations(username);
-        console.log(this.props)
     }
     render(){
         let state = this.props.state;
@@ -17,9 +16,8 @@ export default class MyStations extends Component {
             return (
 
                 <Link to={"/signedin/mystations/" + station.name} key={key} className="my-stations-station-div col-xs-6 col-sm-4 col-md-3">
-                    <div className="station-div-name column"><div className="centered">{station.name}</div></div>
+                    <div className="station-div-name column"><div className="centered green-text font-md">{station.name}</div></div>
                     <div className="station-div-name column"><div className="centered">{station.plants.length} plants</div></div>
-                    <div className="btn-all btn-big station-div-view-button">View</div>
                 </Link>
 
             )
@@ -34,7 +32,7 @@ export default class MyStations extends Component {
 
                         <header className="my-stations-header">
                             <div className="my-stations-header-overview column font-md">
-                                <span className="green-text">My Stations</span>
+                                <span className="green-text">My stations</span>
                             </div>
                             <Link to="/signedin/mystations/addstation" className="my-stations-header-add-btn btn-all column">
                                 <div className="vertically-centered"><i className="material-icons">add</i></div>

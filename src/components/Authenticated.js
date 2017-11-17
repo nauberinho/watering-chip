@@ -19,8 +19,6 @@ export default class Authenticated extends Component {
 
     componentDidMount(){
         let self = this;
-
-        console.log(this.props.match);
     }
 
     render(){

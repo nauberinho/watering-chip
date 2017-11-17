@@ -11,7 +11,6 @@ export default class ViewStation extends Component{
         this.forceUpdate()
         let username = this.props.mainState.auth.sessionUser.username;
         let stationName= this.props.match.params.station;
-        console.log(this.props);
         //Retrieving desired station from database on render, based on the "station" parameter of the router.
         this.props.fetchOneStation(username, stationName);
     }
@@ -22,9 +21,7 @@ export default class ViewStation extends Component{
             let username = this.props.mainState.auth.sessionUser.username;
 
             let focusStation = state.focusStation;
-            console.log(focusStation, ' =plants')
             let stationParam = this.props.match.params.station;
-            console.log(stationParam)
             let navButtons = state.stations.map((station, key) => {
                 return (
                     <Link key={key} className="view-station-nav-button centered"
@@ -49,7 +46,7 @@ export default class ViewStation extends Component{
                         </div>
                         <div className="plant-div-img-wrapper column"><img className="plant-div-plant-img centered"
                                                                            src={plant.imgUrl} alt={plant.imgUrl}/></div>
-                        <Link to={"/signedin/myplants/" + plant._id} className="btn-all btn-big plant-div-view-button">View</Link>
+                        <div className="btn-all btn-big plant-div-view-button">View</div>
                     </Link>
                 )
             });

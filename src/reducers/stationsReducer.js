@@ -29,8 +29,14 @@ const stationsReducer = (state = {
         _id: ""
     },
     stationToAdd: {
-        name: "",
-        key: ""
+        object: {
+            name: "",
+            key: "",
+        },
+        validation: {
+            name: true,
+            key: true
+        }
     },
     addPlantMessage: "",
     addStationMessage: ""
@@ -41,19 +47,18 @@ const stationsReducer = (state = {
 
     switch(action.type){
         case 'UPDATE_STATIONS':
-            console.log(action.payload)
             newState.stations = action.payload;
             return newState;
 
         case 'UPDATE_STATION_TO_ADD':
-            newState.stationToAdd[action.payload.target.getAttribute('data-id')] = action.payload.target.value;
+            newState.stationToAdd.object[action.payload.target.getAttribute('data-id')] = action.payload.target.value;
             return newState;
 
         case 'ADD_STATION':
             socket.emit('user-add-station',
                 (
                     {
-                        station: newState.stationToAdd,
+                        station: newState.stationToAdd.object,
                         user: {
                             username: action.payload.username,
                             password: action.payload.password

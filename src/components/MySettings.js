@@ -24,8 +24,8 @@ export default class MySettings extends Component{
                 <section className="div-cover">
 
                     <header className="my-settings-header">
-                        <div className="my-settings-header-overview column">
-                            <div className="vertically-centered green-text"><h2>My Settings</h2></div>
+                        <div className="my-stations-header-overview column font-md">
+                            <span className="green-text">My settings</span>
                         </div>
                     </header>
 

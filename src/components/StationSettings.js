@@ -11,7 +11,6 @@ export default class StationSettings extends Component{
     componentWillMount(){
         let username = this.props.mainState.auth.sessionUser.username;
         let stationName= this.props.match.params.station;
-        console.log('stationName=', stationName)
         this.props.fetchOneStation(username, stationName);
     }
     render(){

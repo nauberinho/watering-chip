@@ -166,6 +166,17 @@ ul{
         font-weight: 700;
     }
 
+    input[type="file"] {
+        display: none;
+    }
+
+    .custom-file-upload{
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+
     /*********POSITIONING AND ALIGNMENT***************/
     .centered{
          margin: auto;
@@ -560,7 +571,6 @@ ul{
     height: 30vh;
     margin-top: 1%;
     border: 1px solid lightgrey;
-    outline: 10px solid white;
     list-style-type: none;
     font-family: 'Abel', sans-serif;
     overflow: hidden;
@@ -601,98 +611,98 @@ ul{
     right: 15%;
 }
 
+    .my-stations-header{
+        position: relative;
+        height: 7%;
+        width: 100%;
+        display: flex;
+        border-bottom: 1px solid #95b580;
+    }
+    .my-stations-header-overview{
+        height: 100%;
+        width: 80%;
+        color: #375b99;
+        font-family: 'Abel', sans-serif;
+        margin: 0;
+        margin-left: 2%;
+        font-weight: 700;
+    }
 
-.my-stations-header{
-    position: relative;
-    height: 7%;
-    width: 100%;
-    display: flex;
-    border-bottom: 1px solid #95b580;
-}
-.my-stations-header-overview{
-    height: 100%;
-    width: 80%;
-    color: #375b99;
-    font-family: 'Abel', sans-serif;
-    margin: 0;
-    margin-left: 2%;
-    font-weight: 700;
-}
+        .display-plants-div{
+            position: relative;
+            height: 90%;
+            overflow: hidden;
+            overflow-y: auto;
+            display: flex;
+            padding: 2%;
+        }
 
-.display-plants-div{
-    position: relative;
-    height: 90%;
-    overflow: hidden;
-    overflow-y: auto;
-    display: flex;
-    padding: 2%;
-}
+        .display-plants-title{
+            width: 100%;
+            height: 10%;
+            color: #375b99;
+            padding-left: 3%;
+            font-family: Abel, sans-serif
+        }
 
-.display-plants-title{
-    width: 100%;
-    height: 10%;
-    color: #375b99;
-    padding-left: 3%;
-    font-family: Abel, sans-serif
-}
-
-.my-stations-plant-div{
-    height: 25%;
-    margin-top: 4%;
-    border: 1px solid lightgrey;
-    margin-left: 3px;
-    list-style-type: none;
-    font-family: 'Abel', sans-serif;
-    overflow: hidden;
-    background: white;
-    display: flex;
-    flex-direction: row;
-    border-radius: 2%;
-}
-.plant-div-name{
-    width: 40%;
-    height: 100%;
-    font-weight: 700;
-    color: #375b99;
-    overflow: hidden;
-    margin: auto;
-    text-overflow:ellipsis;
-}
-.plant-div-img-wrapper{
-    width: 40%;
-    height: 100%;
-    overflow: hidden;
-    margin: auto;
-}
-.plant-div-plant-img{
-    display: block;
-    max-height: 100%;
-    max-width: 100%;
-    margin: auto;
-}
-.plant-div-view-button{
-    width: 20%;
-    height: 100%;
-    font-size: 1em;
-    margin: auto;
-}
-.view-stations-nav-wrapper{
-    position: absolute;
-    top: 25%;
-    right: 0;
-    height: 50%;
-    width: 10%;
-    overflow-y: auto;
-}
-.view-station-nav-button{
-    color: #375b99;
-    height: 10%;
-    width: 80%;
-    text-align: right;
-    cursor: pointer;
-    positioN: relative;
-    z-index: 1009;
-}
+        .my-stations-plant-div{
+            height: 25%;
+            margin-top: 4%;
+            border: 1px solid lightgrey;
+            margin-left: 3px;
+            list-style-type: none;
+            font-family: 'Abel', sans-serif;
+            overflow: hidden;
+            background: white;
+            display: flex;
+            flex-direction: row;
+            border-radius: 2%;
+        }
+            .plant-div-name{
+                width: 40%;
+                height: 100%;
+                font-weight: 700;
+                color: #375b99;
+                overflow: hidden;
+                margin: auto;
+                text-overflow:ellipsis;
+            }
+            .plant-div-img-wrapper{
+                width: 40%;
+                height: 100%;
+                overflow: hidden;
+                margin: auto;
+                padding: 1%;
+            }
+                .plant-div-plant-img{
+                    display: block;
+                    max-height: 100%;
+                    max-width: 100%;
+                    margin: auto;
+                }
+                .plant-div-view-button{
+                    width: 20%;
+                    height: 100%;
+                    font-size: 1em;
+                    margin: auto;
+                }
+    .view-stations-nav-wrapper{
+        position: absolute;
+        top: 25%;
+        right: 0;
+        height: 50%;
+        width: 10%;
+        overflow-y: auto;
+    }
+    .view-station-nav-button{
+        color: #375b99;
+        height: 10%;
+        width: 80%;
+        text-align: right;
+        cursor: pointer;
+        positioN: relative;
+        z-index: 1009;
+    }
 
 /************ STATION SETTINGS ************/
 
@@ -718,6 +728,16 @@ ul{
 
 
         /*****NAV BUTTONS*****/
+
+    .view-plant-nav-wrapper{
+        position: absolute;
+        top: 25%;
+        right: 0;
+        height: 50%;
+        width: 10%;
+        overflow-y: auto;
+
+    }
 
 
 
@@ -1042,7 +1062,7 @@ ul{
 
     .my-settings-header{
         position: relative;
-        height: 10%;
+        height: 7%;
         width: 100%;
         display: flex;
         border-bottom: 1px solid #95b580;

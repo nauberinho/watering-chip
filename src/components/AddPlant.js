@@ -22,6 +22,10 @@ export default class AddPlant extends Component {
                            placeholder="To which slot is your plant connected?" onKeyUp={this.props.updatePlantToAdd}/>
                     <input className="input-all add-plant-input" type="text" data-id="imgUrl"
                            placeholder="Your plant's img url" onKeyUp={this.props.updatePlantToAdd}/>
+                    <label for="file-upload" class="custom-file-upload">
+                        Custom Upload
+                    </label>
+                    <input id="file-upload" type="file" accept="image/*" capture="camera"/>
 
                     <select className="input-all add-plant-input" onChange={this.props.updatePlantToAdd} name="Plant category" data-id="category">
                         <option value="vegetable">Vegetable</option>

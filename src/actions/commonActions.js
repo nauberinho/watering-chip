@@ -36,12 +36,10 @@ export function filter(event){
 }
 
 export function changeAuthType (event){
-
     return {
         type: 'CHANGE_AUTH_TYPE',
         payload: event
     }
-
 }
 
 export function updateAuthObject(event){
@@ -51,14 +49,20 @@ export function updateAuthObject(event){
     }
 }
 
+export function handleCreateAccount(event){
+    return {
+        type: 'HANDLE_CREATE_ACCOUNT',
+        payload: event
+    }
+
+}
+
 export function handleSignIn(event){
     return {
         type: 'HANDLE_SIGN_IN',
         payload: event
     }
 }
-
-
 
 export function handleSignOut(event){
     return {
@@ -67,21 +71,7 @@ export function handleSignOut(event){
     }
 }
 
-export function handleCreateAccount(event){
-
-    return {
-        type: 'HANDLE_CREATE_ACCOUNT',
-        payload: event
-    }
-
-}
-
-export function updatePlantToAdd(event){
-    return {
-        type: 'UPDATE_PLANT_TO_ADD',
-        payload: event
-    }
-}
+/********STATION ACTIONS************/
 
 export function updateStationToAdd(event){
     return{
@@ -90,8 +80,14 @@ export function updateStationToAdd(event){
     }
 }
 
-export function fetchStations(username){
+export function addStation(username){
+    return {
+        type: 'ADD_STATION',
+        payload: {username: username}
+    }
+}
 
+export function fetchStations(username){
     socket.emit('user-get-stations', ({user:{username: username}}));
     return (dispatch) => {
         socket.on('user-get-stations-confirmation', function(data){
@@ -119,18 +115,38 @@ export function fetchOneStation(username, stationName){
     }
 }
 
-export function addPlant(username){
+export function deleteOneStation(username, stationName){
+    socket.emit('user-delete-one-station', (
+            {
+                user: {
+                    username: username
+                },
+                station: {
+                    name: stationName
+                }
+            }
+        )
+    );
+    return (dispatch) => {
+        socket.on('user-delete-one-station-confirmation', function(data){
+            dispatch({type: 'FOCUS_ON_STATION', payload: data})
+        })
 
-    return {
-        type: 'ADD_PLANT',
-        payload: {username: username}
     }
 }
 
-export function addStation(username){
+/***********PLANT ACTIONS***********/
 
+export function updatePlantToAdd(event){
     return {
-        type: 'ADD_STATION',
+        type: 'UPDATE_PLANT_TO_ADD',
+        payload: event
+    }
+}
+
+export function addPlant(username){
+    return {
+        type: 'ADD_PLANT',
         payload: {username: username}
     }
 }
@@ -144,25 +160,6 @@ export function fetchPlants(username){
 
     }
 }
-
-export function water(plantId){
-    socket.emit('user-water-plant', (
-            {
-                plant: {
-                    id: plantId
-                }
-            }
-        )
-    );
-    return (dispatch) => {
-        socket.on('user-water-plant-confirmation', function(data){
-            dispatch({type: 'WATER_PLANT', payload: data.plants})
-        })
-
-    }
-}
-
-
 
 export function focusOnPlant (plantId, username, stationName){
     socket.emit('user-get-one-station', (
@@ -213,23 +210,22 @@ export function removeOnePlant(plantName, username, stationName){
     }
 }
 
-export function deleteOneStation(username, stationName){
-    socket.emit('user-delete-one-station', (
+export function water(plantId){
+    socket.emit('user-water-plant', (
             {
-                user: {
-                    username: username
-                },
-                station: {
-                    name: stationName
+                plant: {
+                    id: plantId
                 }
             }
         )
     );
     return (dispatch) => {
-        socket.on('user-delete-one-station-confirmation', function(data){
-            dispatch({type: 'FOCUS_ON_STATION', payload: data})
+        socket.on('user-water-plant-confirmation', function(data){
+            dispatch({type: 'WATER_PLANT', payload: data.plants})
         })
 
     }
 }
+
+
 
