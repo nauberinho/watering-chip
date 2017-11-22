@@ -136,6 +136,9 @@ export default class Authenticated extends Component {
                                             fetchOneStation={this.props.fetchOneStation}
                                             stationsState={this.props.stationsState}
                                             deleteOneStation={this.props.deleteOneStation}
+                                            updateStation={this.props.updateStation}
+                                            updateStationToChange={this.props.updateStationToChange}
+
                                         />
                                     )}>
                                     </Route>

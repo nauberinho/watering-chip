@@ -26,7 +26,9 @@ import {
     fetchOneStation,
     updateStationToAdd,
     addStation,
-    deleteOneStation
+    deleteOneStation,
+    updateStation,
+    updateStationToChange
 } from '../actions/commonActions.js';
 
 import {connect} from 'react-redux';
@@ -101,6 +103,8 @@ class App extends Component {
                                       updateStationToAdd={this.props.updateStationToAdd}
                                       addStation={this.props.addStation}
                                       deleteOneStation={this.props.deleteOneStation}
+                                      updateStation={this.props.updateStation}
+                                      updateStationToChange={this.props.updateStationToChange}
                                   />
                               :
                               <Redirect to="/"/>
@@ -227,6 +231,13 @@ const mapDispatchToProps = (dispatch) => {
             },
             deleteOneStation: (username, stationName) => {
                 dispatch( deleteOneStation(username, stationName))
+            },
+
+            updateStation: (username) => {
+                 dispatch( updateStation(username))
+            },
+            updateStationToChange: (event) => {
+                dispatch( updateStationToChange(event))
             },
 
 

@@ -1,4 +1,6 @@
 import socket from '../socket.js'
+import url from '../url.js';
+
 
 export function initRender (){
     return {
@@ -80,59 +82,117 @@ export function updateStationToAdd(event){
     }
 }
 
+export function updateStationToChange(event){
+    return{
+        type: 'UPDATE_STATION_TO_CHANGE',
+        payload: event
+    }
+}
+
+
+
 export function addStation(username){
     return {
         type: 'ADD_STATION',
         payload: {username: username}
     }
 }
-
-export function fetchStations(username){
-    socket.emit('user-get-stations', ({user:{username: username}}));
-    return (dispatch) => {
-        socket.on('user-get-stations-confirmation', function(data){
-            dispatch({type: 'UPDATE_STATIONS', payload: data})
-        })
+export function updateStation(username){
+    return {
+        type: 'UPDATE_STATION',
+        payload: {username: username}
     }
 }
+
+
+export function fetchStations(username) {
+
+    return (dispatch) => {
+        var request = new Request(url + 'user-get-stations', {
+            method: 'POST',
+            body: JSON.stringify({user: {username: username}}),
+            mode: "cors",
+            headers: new Headers({
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            })
+        });
+        fetch(request)
+            .then(function (response) {
+                return response.json()
+            })
+            .then((data) => {
+                dispatch({type: 'UPDATE_STATIONS', payload: data});
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+        }
+}
+
 
 export function fetchOneStation(username, stationName){
-    socket.emit('user-get-one-station', (
-        {
-            user: {
-                username: username
-             },
-            station: {
-                name: stationName
-            }
-        }
-        )
-    );
-    return (dispatch) => {
-        socket.on('user-get-one-station-confirmation', function(data){
-            dispatch({type: 'FOCUS_ON_STATION', payload: data})
-        })
-    }
-}
 
-export function deleteOneStation(username, stationName){
-    socket.emit('user-delete-one-station', (
-            {
+    return (dispatch) => {
+        var request = new Request(url + 'user-get-one-station', {
+            method: 'POST',
+            body: JSON.stringify({
                 user: {
                     username: username
                 },
                 station: {
                     name: stationName
                 }
-            }
-        )
-    );
-    return (dispatch) => {
-        socket.on('user-delete-one-station-confirmation', function(data){
-            dispatch({type: 'FOCUS_ON_STATION', payload: data})
-        })
+            }),
+            mode: "cors",
+            headers: new Headers({
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            })
+        });
+        fetch(request)
+            .then(function (response) {
+                return response.json()
+            })
+            .then((data) => {
+                dispatch({type: 'FOCUS_ON_STATION', payload: data});
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+    };
 
-    }
+}
+
+export function deleteOneStation(username, stationName){
+    return (dispatch) => {
+        var request = new Request(url + 'user-delete-one-station', {
+            method: 'POST',
+            body: JSON.stringify({
+                user: {
+                    username: username
+                },
+                station: {
+                    name: stationName
+                }
+            }),
+            mode: "cors",
+            headers: new Headers({
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            })
+        });
+        fetch(request)
+            .then(function (response) {
+                return response.json()
+            })
+            .then((data) => {
+                dispatch({type: 'FOCUS_ON_STATION', payload: data});
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+    };
 }
 
 /***********PLANT ACTIONS***********/
@@ -151,6 +211,7 @@ export function addPlant(username){
     }
 }
 
+
 export function fetchPlants(username){
     socket.emit('user-get-plants', ({username: username}));
     return (dispatch) => {
@@ -161,23 +222,36 @@ export function fetchPlants(username){
     }
 }
 
+
 export function focusOnPlant (plantId, username, stationName){
-    socket.emit('user-get-one-station', (
-            {
+    return (dispatch) => {
+        var request = new Request(url + 'user-get-one-station', {
+            method: 'POST',
+            body: JSON.stringify({
                 user: {
                     username: username
                 },
                 station: {
                     name: stationName
                 }
-            }
-        )
-    );
-    return (dispatch) => {
-        socket.on('user-get-one-station-confirmation', function(data){
-            dispatch({type: 'FOCUS_ON_PLANT', payload:{station: data, plantId: plantId}})
-        })
-    }
+            }),
+            mode: "cors",
+            headers: new Headers({
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            })
+        });
+        fetch(request)
+            .then(function (response) {
+                return response.json()
+            })
+            .then((data) => {
+                dispatch({type: 'FOCUS_ON_PLANT', payload:{station: data, plantId: plantId}})
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+    };
 }
 
 export function focusOffPlant (plantId, username){
@@ -188,8 +262,12 @@ export function focusOffPlant (plantId, username){
 
 
 export function removeOnePlant(plantName, username, stationName){
-    socket.emit('user-remove-one-plant', (
-            {
+
+
+    return (dispatch) => {
+        var request = new Request(url + 'user-remove-one-plant', {
+            method: 'POST',
+            body: JSON.stringify({
                 plant: {
                     name: plantName
                 },
@@ -199,15 +277,24 @@ export function removeOnePlant(plantName, username, stationName){
                 station: {
                     name: stationName
                 }
-            }
-        )
-    );
-    return (dispatch) => {
-        socket.on('user-remove-one-plant-confirmation', function(data){
-            dispatch({type: 'FOCUS_ON_STATION', payload: data})
-        })
-
-    }
+            }),
+            mode: "cors",
+            headers: new Headers({
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            })
+        });
+        fetch(request)
+            .then(function (response) {
+                return response.json()
+            })
+            .then((data) => {
+                dispatch({type: 'FOCUS_ON_STATION', payload: data})
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+    };
 }
 
 export function water(plantId){

@@ -1,4 +1,5 @@
 import socket from '../socket.js'
+import url from '../url.js';
 
 const mainReducer = (state = {
     view: "home",
@@ -6,11 +7,11 @@ const mainReducer = (state = {
     auth: {
         authObject: {
             username: "skrra",
-            password: "bror"
+            password: "skrra"
         },
         sessionUser: {
-            username: "skrra",
-            password: "skrra",
+            username: "testtest",
+            password: "testtest",
             favoritePlants: "Wild plants",
             myStations: [
                 {
@@ -73,12 +74,27 @@ const mainReducer = (state = {
 
 
             case 'HANDLE_CREATE_ACCOUNT': // Sends state's authObject to the database, which then creates an account.
-                 let userToAdd = newState.auth.authObject;
-                 socket.emit('system-add-user', userToAdd);
-                 socket.on('system-add-user-confirmation', function(data){
-                     console.log('received confirmation')
-
-                })
+                let userToAdd = newState.auth.authObject;
+                var request = new Request(url + 'system-add-user', {
+                    method: 'POST',
+                    body: JSON.stringify(newState.auth.authObject), //chipKey = a string with chips key
+                    mode: "cors",
+                    headers: new Headers({
+                        'Accept': 'application/json, text/plain, */*',
+                        'Content-Type': 'application/json'
+                    })
+                });
+                fetch(request)
+                    .then(function (response) {
+                        return response.json()
+                    })
+                    .then((data) => {
+                        newState.sessionUser = data;
+                        newState.signedIn = true;
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
                  return newState;
 
             case 'UPDATE_AUTH_OBJECT': // Updates state's authObject when user modifies the input fields under a sign in or create account session.

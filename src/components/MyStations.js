@@ -26,7 +26,7 @@ export default class MyStations extends Component {
 
             <main className="content content-main">
 
-                {stations[0].name.length !== 0 ?
+                {stations !== undefined ?
 
                     <section className="div-cover">
 
