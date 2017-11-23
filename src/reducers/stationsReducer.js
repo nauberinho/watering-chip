@@ -1,4 +1,3 @@
-import socket from '../socket.js'
 import url from '../url.js';
 
 const stationsReducer = (state = {
@@ -56,7 +55,7 @@ const stationsReducer = (state = {
 
         case 'UPDATE_STATION_TO_ADD':
             let targetId = action.payload.target.getAttribute('data-id');
-            let value =  action.payload.target.value
+            let value =  action.payload.target.value;
             newState.stationToAdd.object[targetId] = value;
             let checkExistence = newState.stations.filter((station) => {
                 return station[targetId] === value
@@ -71,6 +70,9 @@ const stationsReducer = (state = {
             return newState;
 
         case 'ADD_STATION':
+
+            if(newState.stationToAdd.validation.name === true  && newState.stationToAdd.validation.key === true)
+            {
 
             var request = new Request(url + 'user-add-station', {
                 method: 'POST',
@@ -97,6 +99,7 @@ const stationsReducer = (state = {
                 .catch(function (error) {
                     console.log(error)
                 })
+            }
             return newState;
 
         case 'UPDATE_PLANT_TO_ADD':

@@ -23,8 +23,8 @@ export default class Authentication extends Component {
                             { state.auth.create === true ?
 
                                 <div className="col-sm-6 form-container">
-                                    <button className='col-sm-6 btn-all btn-go-back'><i className="material-icons">highlight_off</i>
-                                        <button className="btn-cover" id={this.props.state.view} onClick={this.props.changeView}></button></button>
+                                    <div className='col-sm-6 btn-all btn-go-back'><i className="material-icons">highlight_off</i>
+                                        <button className="btn-cover" id={this.props.state.view} onClick={this.props.changeView}></button></div>
                                     <h3 className="auth-h2 lightpurple-text">Create account</h3>
                                     <input type="text" data-id="username" id="usernameInput" className="input-all auth-input"
                                            placeholder="Your username"
@@ -41,9 +41,9 @@ export default class Authentication extends Component {
 
 
                                 <div className="col-sm-6 form-container">
-                                    <button className='col-sm-6 btn-all btn-go-back'><i className="material-icons">highlight_off</i>
+                                    <div className='col-sm-6 btn-all btn-go-back'><i className="material-icons">highlight_off</i>
                                         <button className="btn-cover" id={this.props.state.view} onClick={this.props.changeView}></button>
-                                    </button>
+                                    </div>
 
                                     <h3 className="auth-h2 lightpurple-text">Sign In</h3>
 

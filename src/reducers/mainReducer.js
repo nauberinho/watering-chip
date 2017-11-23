@@ -1,4 +1,3 @@
-import socket from '../socket.js'
 import url from '../url.js';
 
 const mainReducer = (state = {
@@ -10,8 +9,8 @@ const mainReducer = (state = {
             password: "skrra"
         },
         sessionUser: {
-            username: "testtest",
-            password: "testtest",
+            username: "doublette",
+            password: "doublette",
             favoritePlants: "Wild plants",
             myStations: [
                 {
@@ -34,11 +33,9 @@ const mainReducer = (state = {
     switch(action.type){
 
         case 'HANDLE_SIGN_IN': // Sends state's authObject to the database and receives a response.
-            socket.emit('system-login-user', newState.auth.authObject);
-            socket.on('system-login-user-confirmation', function(data){
-                console.log('user was signed in')
+
                 newState.auth.signedIn = true;
-            });
+
 
             return newState;
 

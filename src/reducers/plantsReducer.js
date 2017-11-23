@@ -1,5 +1,3 @@
-import socket from '../socket.js'
-
 const plantsReducer = (state = {
 
     plants: [],
@@ -59,13 +57,6 @@ const plantsReducer = (state = {
             newState.plantToAdd[action.payload.target.getAttribute('data-id')] = action.payload.target.value;
             return newState;
 
-        /*case 'ADD_PLANT':
-            let plantToAdd = newState.plantToAdd;
-            let username = action.payload;
-            console.log(plantToAdd);
-            socket.emit('user-add-plant', {username: username, plant: plantToAdd});
-            socket.on('user-add-plant-confirmation', (data) => {console.log('plant added', data)});
-            return newState;*/
 
         default:
             return newState;

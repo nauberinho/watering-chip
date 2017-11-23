@@ -1,4 +1,3 @@
-import socket from '../socket.js'
 const authenticatedReducer = (state = {
     view: "myplants",
     userMenu: "hidden"

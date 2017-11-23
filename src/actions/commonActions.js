@@ -1,4 +1,3 @@
-import socket from '../socket.js'
 import url from '../url.js';
 
 
@@ -213,13 +212,7 @@ export function addPlant(username){
 
 
 export function fetchPlants(username){
-    socket.emit('user-get-plants', ({username: username}));
-    return (dispatch) => {
-        socket.on('user-get-plants-confirmation', function(data){
-            dispatch({type: 'UPDATE_PLANTS', payload: data})
-        })
 
-    }
 }
 
 
@@ -295,23 +288,6 @@ export function removeOnePlant(plantName, username, stationName){
                 console.log(error)
             })
     };
-}
-
-export function water(plantId){
-    socket.emit('user-water-plant', (
-            {
-                plant: {
-                    id: plantId
-                }
-            }
-        )
-    );
-    return (dispatch) => {
-        socket.on('user-water-plant-confirmation', function(data){
-            dispatch({type: 'WATER_PLANT', payload: data.plants})
-        })
-
-    }
 }
 
 

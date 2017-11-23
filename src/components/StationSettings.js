@@ -20,15 +20,17 @@ export default class StationSettings extends Component{
         return (
 
             <section className="div-cover">
-
-                <header className="my-settings-header">
-                    <div className="my-stations-header-overview column font-md">
-                        <span className="green-text">My settings</span>
+                <header className="my-stations-header">
+                    <div className="my-stations-header-overview font-md">
+                        <div className="my-stations-header-overview font-md">
+                            <span className="lightgrey-text font-sm">My stations > </span>
+                            <span className="lightgrey-text font-sm">{stationName} > </span>
+                            <span className="green-text font-sm">Settings</span>
+                        </div>
                     </div>
                 </header>
 
                 <div className="station-settings-wrapper row">
-
                     <section className="station-settings-notifications-container col-xs-12 col-sm-6 col-md-4 column">
                         <div className="notification-title centered"><h3 className="green-text">Notify me when...</h3></div>
                         <div className="notification-div lightpurple-text centered">

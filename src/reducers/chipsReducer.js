@@ -1,5 +1,3 @@
-import socket from '../socket.js'
-
 const chipsReducer = (state = {
     chips: [],
     focusPlant: {

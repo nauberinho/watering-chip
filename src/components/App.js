@@ -2,7 +2,6 @@ import Header from './Header.js'
 import Authenticated from './Authenticated.js';
 import Authentication from './Authentication.js';
 import { BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
-import socket from '../socket.js'
 import '../App.css';
 import {
     changeView,
@@ -16,7 +15,6 @@ import {
     fetchPlants,
     toggleMenu,
     navigate,
-    water,
     focusOnPlant,
     focusOffPlant,
     updatePlantToAdd,
@@ -38,16 +36,6 @@ import React, { Component } from 'react';
 class App extends Component {
 
     componentDidMount(){
-
-        console.log(this)
-        socket.on('water-confirmation', function(data) {
-            console.log(data)
-        })
-        socket.on('user-connection-confirmation', function(data) {
-            console.log('CONNECTED TO SERVER')
-        })
-
-
     }
 
   render() {
@@ -90,7 +78,6 @@ class App extends Component {
                                       mainState={this.props.mainState}
                                       handleSignOut={this.props.handleSignOut}
                                       navigate={this.props.navigate}
-                                      water={this.props.water}
                                       match={props.match}
                                       focusOnPlant={this.props.focusOnPlant}
                                       updatePlantToAdd={this.props.updatePlantToAdd}
@@ -193,10 +180,6 @@ const mapDispatchToProps = (dispatch) => {
             focusOffPlant: (plantId, username) => {
 
                 dispatch(focusOffPlant(plantId, username))
-            },
-
-            water: (event) => {
-                dispatch(water(event))
             },
 
             updatePlantToAdd: (event) => {
