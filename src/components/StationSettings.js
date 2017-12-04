@@ -55,6 +55,7 @@ export default class StationSettings extends Component{
                         <div className="notification-title centered"><h3 className="green-text">Measure humidity...</h3></div>
                         <div className="measure-humidity-div lightpurple-text centered">
                             <select onChange={this.props.updateStationToChange} name="measure_humidity" data-property="settings" data-id="measure_humidity">
+                                <option selected disabled>{this.props.state.focusStation.settings.measure_humidity}</option>
                                 <option data-id="measure_humidity" type="checkbox" value="10">Every 10 minutes</option>
                                 <option data-id="measure_humidity" type="checkbox" value="30">Every 30 minutes</option>
                                 <option data-id="measure_humidity" type="checkbox" value="60">Every hour</option>
@@ -68,7 +69,7 @@ export default class StationSettings extends Component{
 
                     <section className="my-settings-notifications-container col-xs-12 col-sm-6 col-md-4 column">
                         <div className="centered station-settings-wrapper col-xs-12 col-sm-6 col-md-4 column">
-                            <Link to="/signedin/mystations" onClick={() => {this.props.deleteOneStation(username, stationName)}} className="btn-all btn-big station-settings-delete-btn centered">Delete this station</Link>
+                            <Link to="/signedin/mystations" onClick={() => {this.props.deleteOneStation(username, stationName)}} className="btn-all btn-big station-settings-update-btn centered">Delete this station</Link>
                         </div>
                         <div className="centered station-settings-wrapper col-xs-12 col-sm-6 col-md-4 column">
                             <Link to="/signedin/mystations" onClick={() => {this.props.updateStation(username)}} className="btn-all btn-big station-settings-delete-btn centered">Confirm changes</Link>
@@ -76,9 +77,6 @@ export default class StationSettings extends Component{
                     </section>
 
                 </div>
-
-
-
 
             </section>
 

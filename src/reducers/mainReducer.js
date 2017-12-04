@@ -5,12 +5,12 @@ const mainReducer = (state = {
     userMenu: "hidden",
     auth: {
         authObject: {
-            username: "skrra",
-            password: "skrra"
+            username: "herokuTest",
+            password: "herokuTest"
         },
         sessionUser: {
-            username: "doublette",
-            password: "doublette",
+            username: "tester",
+            password: "tester",
             favoritePlants: "Wild plants",
             myStations: [
                 {

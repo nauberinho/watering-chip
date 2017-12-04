@@ -26,7 +26,8 @@ const stationsReducer = (state = {
         imgUrl: "",
         slot: Number,
         __v: 0,
-        _id: ""
+        _id: "",
+        img: []
     },
     stationToAdd: {
         object: {
@@ -38,10 +39,7 @@ const stationsReducer = (state = {
             key: true
         }
     },
-    stationToChange: {
-
-
-    },
+    stationToChange: {},
     addPlantMessage: "",
     addStationMessage: ""
 }, action) => {
@@ -173,19 +171,10 @@ const stationsReducer = (state = {
 
         case 'ADD_PLANT':
 
-            var request = new Request(url + 'user-add-plant', {
+            let formData = new FormData();
+            var request = new Request(url + 'user-add-plant-image', {
                 method: 'POST',
-                body: JSON.stringify({
-                    user: {
-                        username: action.payload.username
-                    },
-                    plant: newState.plantToAdd,
-
-                    station: {
-                        name: newState.focusStation.name
-                    }
-
-                }),
+                body: JSON.stringify(formData),
                 mode: "cors",
                 headers: new Headers({
                     'Accept': 'application/json, text/plain, */*',
@@ -194,15 +183,73 @@ const stationsReducer = (state = {
             });
             fetch(request)
                 .then(function (response) {
+
+                    var request = new Request(url + 'user-add-plant', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            user: {
+                                username: action.payload.username
+                            },
+                            plant: newState.plantToAdd,
+
+                            station: {
+                                name: newState.focusStation.name
+                            }
+                        }),
+                        mode: "cors",
+                        headers: new Headers({
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json'
+                        })
+                    });
+                    fetch(request)
+                        .then(function (response) {
+                            return response.json()
+                        })
+                        .then((data) => {
+                            newState.addPlantMessage = 'Your plant was added.'
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
+
+
                     return response.json()
-                })
-                .then((data) => {
-                    newState.addPlantMessage = 'Your plant was added.'
-                })
-                .catch(function (error) {
-                    console.log(error)
+
+
                 })
 
+
+
+            return newState;
+
+        case "UPDATE_IMAGE_PROPERTY":
+               newState.plantToAdd.img = action.payload;
+
+        case 'UPDATE_PLANT_SETTINGS':
+            let stationToUpdate = newState.focusStation;
+            let settingValue;
+            if(action.payload[0]){
+                settingValue = action.payload[0]
+                for(var plant in stationToUpdate.plants){
+                    if(stationToUpdate.plants[plant]._id === newState.focusPlant._id){
+                        stationToUpdate.plants[plant].settings.water_frequency = settingValue;
+                        newState.focusPlant.settings.water_frequency = settingValue;
+                    }
+                }
+            }
+            else {
+                settingValue = action.payload.target.value;
+                let dataIndex = action.payload.target.getAttribute('data-index');
+                let dataProp = action.payload.target.getAttribute('data-prop');
+                for(var plant in focusStation.plants){
+                    if(focusStation.plants[plant]._id === action.payload.target.getAttribute('data-id'))   {
+                        stationToUpdate.plants[dataIndex].settings[dataProp] = settingValue;
+
+                    }
+                }
+            }
+            newState.stationToChange = stationToUpdate;
             return newState;
 
         default:

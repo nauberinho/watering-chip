@@ -120,13 +120,14 @@ export default class Authenticated extends Component {
                                         fetchStations={this.props.fetchStations}
                                         fetchOneStation={this.props.fetchOneStation}
                                         stationsState={this.props.stationsState}
+                                        uploadImage={this.props.uploadImage}
                                     />
                                     )}>
                                     </Route>
 
                                     <Route exact path="/signedin/mystations/:station/settings" render={(props) => (
                                         <StationSettings
-                                            state={state}
+                                            state={this.props.stationsState}
                                             match={props.match}
                                             plantsState={this.props.plantsState}
                                             updatePlantToAdd={this.props.updatePlantToAdd}
@@ -156,6 +157,8 @@ export default class Authenticated extends Component {
                                             focusOffPlant={this.props.focusOffPlant}
                                             fetchStations={this.props.fetchStations}
                                             fetchOneStation={this.props.fetchOneStation}
+                                            updatePlantSettings={this.props.updatePlantSettings}
+                                            updateStation={this.props.updateStation}
                                         />
                                     )}>
 

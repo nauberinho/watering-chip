@@ -97,7 +97,7 @@ button:focus {outline:0;}
   background: none;
   display: block;
   border: none;
-  transition: 0.2s ease;
+  transition: 0.1s ease;
   cursor: pointer;
   font-weight: 700;
   outline: none!important;
@@ -735,12 +735,14 @@ input[type="file"] {
 
 }
 
-.station-settings-delete-btn{
-  width: 50%;
-  padding: 2px;
+.station-settings-delete-btn, .station-settings-update-btn{
+  width: 100%;
   margin: auto;
   background-color: white;
   color: #375b99;
+  padding: 3%;
+  text-decoration: none!important;
+  transition: 0.1s ease;
 }
 
 /********VIEW PLANT SECTION*********/
@@ -1015,6 +1017,16 @@ input[type="file"] {
 
 }
 
+.view-plant-question-mark{
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  background: #efefef;
+  width: 10%;
+  display: inline;
+  font-weight: 700;
+}
+
 .view-plant-nav-button{
   color: #375b99;
   height: 10%;
@@ -1023,6 +1035,91 @@ input[type="file"] {
   cursor: pointer;
   positioN: relative;
   z-index: 1009;
+}
+
+.view-plant-range-slider{
+  width: 80%;
+  height: 50%;
+  font-weight: 700;
+  text-align: center;
+}
+
+.range-slider-span{
+  margin: auto;
+  font-size: 2em;
+  height: 60%;
+}
+
+.rc-slider {
+  position: relative;
+  height: 14px;
+  padding: 5px 0;
+  width: 100%;
+  border-radius: 6px;
+  -ms-touch-action: none;
+  touch-action: none;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: white;
+}
+
+
+.rc-slider-track {
+  position: absolute;
+  left: 0;
+  height: 3px!important;
+  background-color: #1e261e;
+}
+
+.rc-slider-rail {
+  position: absolute;
+  width: 100%;
+  background-color: lightgrey!important;
+  height: 1px;
+  border-radius: 6px;
+}
+
+
+
+.rc-slider-handle{
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  background-color: #646566;
+  outline: none;
+}
+
+.rc-slider-handle:hover {
+  border-color: none;
+}
+.rc-slider-handle:active {
+  border-color: none;
+  box-shadow: 0 0 5px #57c5f7;
+
+}
+.rc-slider-handle:focus {
+  border-color: none;
+  box-shadow: 0 0 0 5px #96dbfa;
+  outline: none;
+}
+
+.rc-slider-tooltip-inner {
+  padding: 6px 2px;
+  min-width: 24px;
+  margin-top: 40%;
+  height: 24px;
+  font-size: 12px;
+  line-height: 1;
+  color: #1e261e;
+  text-align: center;
+  text-decoration: none;
+  background-color: white;
+  box-shadow: 0 0 4px #d9d9d9;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.rc-slider-dot-active {
+  border-color: none;
 }
 
 /********* ADD SECTION *********************/
@@ -1142,7 +1239,15 @@ input[type="file"] {
   width: 30%;
 }
 
-
+.add-plant-upload-image{
+  height: 100%;
+  font-weight: 700;
+  font-size: 1.5em;
+  color: rebeccapurple;
+  font-family: Abel, sans-serif;
+  background: #efefef;
+  cursor: pointer;
+}
 
 /********MENU SECTION******************/
 .profile-menu{

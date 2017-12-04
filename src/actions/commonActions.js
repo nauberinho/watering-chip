@@ -105,6 +105,7 @@ export function updateStation(username){
 
 
 export function fetchStations(username) {
+    console.log('fetching stations')
 
     return (dispatch) => {
         var request = new Request(url + 'user-get-stations', {
@@ -131,17 +132,11 @@ export function fetchStations(username) {
 
 
 export function fetchOneStation(username, stationName){
-
     return (dispatch) => {
-        var request = new Request(url + 'user-get-one-station', {
+        var request = new Request(url + 'getStation', {
             method: 'POST',
             body: JSON.stringify({
-                user: {
-                    username: username
-                },
-                station: {
-                    name: stationName
-                }
+                key: 'XM3j-KAi3-B8dL'
             }),
             mode: "cors",
             headers: new Headers({
@@ -160,7 +155,6 @@ export function fetchOneStation(username, stationName){
                 console.log(error)
             })
     };
-
 }
 
 export function deleteOneStation(username, stationName){
@@ -210,6 +204,13 @@ export function addPlant(username){
     }
 }
 
+export function uploadImage (acceptedFile, rejectedFile) {
+    return dispatch => {
+        console.log('acceptedFile: ', acceptedFile);
+        dispatch({type: 'UPDATE_IMAGE_PROPERTY', payload: acceptedFile});
+    }
+}
+
 
 export function fetchPlants(username){
 
@@ -255,8 +256,6 @@ export function focusOffPlant (plantId, username){
 
 
 export function removeOnePlant(plantName, username, stationName){
-
-
     return (dispatch) => {
         var request = new Request(url + 'user-remove-one-plant', {
             method: 'POST',
@@ -282,12 +281,20 @@ export function removeOnePlant(plantName, username, stationName){
                 return response.json()
             })
             .then((data) => {
-                dispatch({type: 'FOCUS_ON_STATION', payload: data})
             })
             .catch(function (error) {
                 console.log(error)
             })
     };
+}
+
+export function updatePlantSettings (event) {
+    console.log(event)
+        return {
+            type: "UPDATE_PLANT_SETTINGS",
+            payload: event
+        }
+
 }
 
 

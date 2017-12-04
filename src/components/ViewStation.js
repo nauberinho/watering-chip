@@ -36,20 +36,23 @@ export default class ViewStation extends Component{
                     </Link>
                 )
             });
+            let plantsList = [];
 
-            let plantsList = state.focusStation.plants.map(function (plant, key) {
-                return (
-                    <Link to={"/signedin/mystations/" + stationParam + "/" +  plant._id} key={key}
-                          className="my-stations-plant-div col-xs-12">
-                        <div className="plant-div-name column">
-                            <div className="centered">{plant.name}</div>
-                        </div>
-                        <div className="plant-div-img-wrapper column"><img className="plant-div-plant-img centered"
-                                                                           src={plant.imgUrl} alt={plant.imgUrl}/></div>
-                        <div className="btn-all btn-big plant-div-view-button">View</div>
-                    </Link>
-                )
-            });
+            if(focusStation.plants !== undefined){
+                 plantsList = focusStation.plants.map(function (plant, key) {
+                    return (
+                        <Link to={"/signedin/mystations/" + stationParam + "/" +  plant._id} key={key}
+                              className="my-stations-plant-div col-xs-12">
+                            <div className="plant-div-name column">
+                                <div className="centered">{plant.name}</div>
+                            </div>
+                            <div className="plant-div-img-wrapper column"><img className="plant-div-plant-img centered"
+                                                                               src={plant.imgUrl} alt={plant.imgUrl}/></div>
+                            <div className="btn-all btn-big plant-div-view-button">View</div>
+                        </Link>
+                    )
+                });
+            }
 
 
             return (

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect, NavLink, Link} from 'react-router-dom';
+import Dropzone from 'react-dropzone';
 
 export default class AddPlant extends Component {
     componentDidMount(){
@@ -22,10 +23,14 @@ export default class AddPlant extends Component {
                            placeholder="To which slot is your plant connected?" onKeyUp={this.props.updatePlantToAdd}/>
                     <input className="input-all add-plant-input" type="text" data-id="imgUrl"
                            placeholder="Your plant's img url" onKeyUp={this.props.updatePlantToAdd}/>
-                    <label for="file-upload" class="custom-file-upload">
-                        Custom Upload
-                    </label>
-                    <input id="file-upload" type="file" accept="image/*" capture="camera"/>
+
+                    <Dropzone capture="camera" className="add-plant-upload-image column" onDrop={this.props.uploadImage}>
+                        <div className="add-plant-upload-image-content centered">
+                            Drag and drop files here
+                            or click to select
+                        </div>
+                    </Dropzone>
+
 
                     <select className="input-all add-plant-input" onChange={this.props.updatePlantToAdd} name="Plant category" data-id="category">
                         <option value="vegetable">Vegetable</option>
@@ -38,11 +43,9 @@ export default class AddPlant extends Component {
 
                 </div>
                 {this.props.stationsState.addPlantMessage.length > 0 ?
-
                     <div className="add-message">
                         {this.props.stationsState.addPlantMessage}
                     </div>
-
                     : null
                 }
             </div>

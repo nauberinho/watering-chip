@@ -4,10 +4,13 @@
   "private": true,
   "dependencies": {
     "body-parser": "^1.18.2",
+    "dropzone": "^5.2.0",
     "gh-pages": "^1.0.0",
     "halogenium": "^2.2.2",
+    "rc-slider": "^8.4.1",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "react-dropzone": "^4.2.3",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-toggle": "^4.0.2",
@@ -26,5 +29,5 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://nauberinho.github.io/watering-chip"
+  "homepage": "https://waterino.tech"
 }

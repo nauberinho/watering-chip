@@ -19,6 +19,7 @@ import {
     focusOffPlant,
     updatePlantToAdd,
     addPlant,
+    uploadImage,
     removeOnePlant,
     fetchStations,
     fetchOneStation,
@@ -26,7 +27,8 @@ import {
     addStation,
     deleteOneStation,
     updateStation,
-    updateStationToChange
+    updateStationToChange,
+    updatePlantSettings
 } from '../actions/commonActions.js';
 
 import {connect} from 'react-redux';
@@ -92,6 +94,8 @@ class App extends Component {
                                       deleteOneStation={this.props.deleteOneStation}
                                       updateStation={this.props.updateStation}
                                       updateStationToChange={this.props.updateStationToChange}
+                                      updatePlantSettings={this.props.updatePlantSettings}
+                                      uploadImage={this.props.uploadImage}
                                   />
                               :
                               <Redirect to="/"/>
@@ -149,7 +153,6 @@ const mapDispatchToProps = (dispatch) => {
             },
 
             handleSignOut: (event) => {
-
                 dispatch(handleSignOut(event))
             },
 
@@ -157,8 +160,6 @@ const mapDispatchToProps = (dispatch) => {
 
                 dispatch(initRender())
             },
-
-
 
             toggleMenu: (event) => {
                 dispatch(toggleMenu(event))
@@ -173,12 +174,10 @@ const mapDispatchToProps = (dispatch) => {
             },
 
             focusOnPlant: (plantId,  username, stationName) => {
-
             dispatch(focusOnPlant(plantId, username, stationName))
             },
 
             focusOffPlant: (plantId, username) => {
-
                 dispatch(focusOffPlant(plantId, username))
             },
 
@@ -192,21 +191,21 @@ const mapDispatchToProps = (dispatch) => {
 
             addPlant: (username) => {
                 dispatch( addPlant(username))
+            },
 
+            uploadImage: (acceptedFile, rejectedFile) => {
+                dispatch( uploadImage(acceptedFile, rejectedFile))
             },
 
             addStation: (username, password) => {
                 dispatch( addStation(username))
-
             },
             removeOnePlant: (plantName, username, stationName) => {
                 dispatch( removeOnePlant(plantName, username, stationName))
-
             },
 
             fetchStations: (username) => {
                 dispatch( fetchStations(username))
-
             },
 
             fetchOneStation: (username, stationName) => {
@@ -222,8 +221,9 @@ const mapDispatchToProps = (dispatch) => {
             updateStationToChange: (event) => {
                 dispatch( updateStationToChange(event))
             },
-
-
+            updatePlantSettings: (event) => {
+                dispatch( updatePlantSettings(event))
+            }
         }
 };
 

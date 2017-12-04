@@ -7,6 +7,11 @@ import PulseLoaderViewPlant from './PulseLoader.js';
 import "react-toggle/style.css"
 import Toggle from 'react-toggle'
 
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+const createSliderWithTooltip = Slider.createSliderWithTooltip;
+const Range = createSliderWithTooltip(Slider.Range);
+
 export default class ViewPlant extends Component{
     componentWillMount(){
         let username = this.props.mainState.auth.sessionUser.username;
@@ -59,11 +64,22 @@ export default class ViewPlant extends Component{
                                         <p>{focusPlant.description}</p>
                                     </div>
                                     <div className="text-center column">
-                                        <span>Automatic</span>
+                                        <span>Water indicator</span>
                                             <div className="toggle-div centered vetically centered">
-                                                <Toggle
+                                                <div className="view-plant-question-mark" title="At what humidity should your plant be watered?">?</div>
+
+                                                <span className="range-slider-span">{focusPlant.settings.water_frequency}</span>
+
+                                            </div>
+                                        <div className="toggle-div centered vetically centered view-plant-range-slider">
+
+                                            <div>
+                                                <Range data-id={focusPlant._id} data-type="range" onChange={this.props.updatePlantSettings} onAfterChange={() => {this.props.updateStation(username)}} railStyle={{backgroundColor: "#20281e", height: "5px"}} tipTransitionName='0.3s ease' allowCross={false} defaultValue={[focusPlant.settings.water_frequency]} min={1} max={10} tipProps={{
+                                                    placement: 'bottom',
+                                                    prefixCls: 'rc-slider-tooltip'}}
                                                 />
                                             </div>
+                                        </div>
                                     </div>
                                     <div className="text-center">
                                         <span>Manual</span>
